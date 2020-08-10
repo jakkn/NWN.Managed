@@ -24,10 +24,7 @@ namespace NWN.API
     /// <summary>
     /// Gets the area this object is currently in.
     /// </summary>
-    public NwArea Area
-    {
-      get => NWScript.GetArea(this).ToNwObject<NwArea>();
-    }
+    public NwArea Area => NWScript.GetArea(this).ToNwObject<NwArea>();
 
     /// <summary>
     /// Gets or sets the local area position of this GameObject.
@@ -50,10 +47,7 @@ namespace NWN.API
     /// <summary>
     /// The world rotation for this object
     /// </summary>
-    public virtual float Rotation
-    {
-      get => NWScript.GetFacing(this) % 360;
-    }
+    public virtual float Rotation => NWScript.GetFacing(this) % 360;
 
     /// <summary>
     /// Gets or sets the visual transform for this object.

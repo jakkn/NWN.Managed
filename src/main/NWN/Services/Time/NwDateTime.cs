@@ -52,17 +52,14 @@ namespace NWN.Services
     /// </summary>
     public static NwDateTime Now
     {
-      get
-      {
-        return new NwDateTime(
-          NWScript.GetCalendarYear(),
-          NWScript.GetCalendarMonth(),
-          NWScript.GetCalendarDay(),
-          NWScript.GetTimeHour(),
-          NWScript.GetTimeMinute(),
-          NWScript.GetTimeSecond(),
-          NWScript.GetTimeMillisecond());
-      }
+      get => new NwDateTime(
+        NWScript.GetCalendarYear(),
+        NWScript.GetCalendarMonth(),
+        NWScript.GetCalendarDay(),
+        NWScript.GetTimeHour(),
+        NWScript.GetTimeMinute(),
+        NWScript.GetTimeSecond(),
+        NWScript.GetTimeMillisecond());
       set
       {
         if (value < Now)
@@ -86,15 +83,9 @@ namespace NWN.Services
       set => NWScript.SetCalendar(value.Year, value.Month, value.DayInMonth);
     }
 
-    public static implicit operator long(NwDateTime dateTime)
-    {
-      return dateTime.Ticks;
-    }
+    public static implicit operator long(NwDateTime dateTime) => dateTime.Ticks;
 
-    private NwDateTime(long ticks)
-    {
-      this.Ticks = ticks;
-    }
+    private NwDateTime(long ticks) => this.Ticks = ticks;
 
     public static NwDateTime FromTicks(long ticks)
     {
@@ -110,16 +101,13 @@ namespace NWN.Services
       ValidateInternal();
     }
 
-    private static long GetTicks(int year = 0, int month = 1, int day = 1, int hour = 0, int minute = 0, int second = 0, int milliSecond = 0)
-    {
-      return year * TicksPerYear +
-             (month - 1) * TicksPerMonth +
-             (day - 1) * TicksPerDay +
-             hour * TicksPerHour +
-             minute * TicksPerMinute +
-             second * TicksPerSecond +
-             milliSecond * TicksPerMillisecond;
-    }
+    private static long GetTicks(int year = 0, int month = 1, int day = 1, int hour = 0, int minute = 0, int second = 0, int milliSecond = 0) => year * TicksPerYear +
+      (month - 1) * TicksPerMonth +
+      (day - 1) * TicksPerDay +
+      hour * TicksPerHour +
+      minute * TicksPerMinute +
+      second * TicksPerSecond +
+      milliSecond * TicksPerMillisecond;
 
     private void ValidateInternal()
     {
@@ -129,10 +117,7 @@ namespace NWN.Services
       }
     }
 
-    public NwDateTime Add(int value, long scale)
-    {
-      return new NwDateTime(Ticks + value * scale);
-    }
+    public NwDateTime Add(int value, long scale) => new NwDateTime(Ticks + value * scale);
 
     public NwDateTime AddMilliseconds(int milliseconds) => Add(milliseconds, 1);
     public NwDateTime AddSeconds(int seconds) => Add(seconds, TicksPerSecond);
@@ -175,15 +160,9 @@ namespace NWN.Services
       return Month.ToString();
     }
 
-    public override string ToString()
-    {
-      return $"{Year}-{Month}-{DayInMonth}T{Hour}:{Minute}:{Second}:{Millisecond}";
-    }
+    public override string ToString() => $"{Year}-{Month}-{DayInMonth}T{Hour}:{Minute}:{Second}:{Millisecond}";
 
     // TODO More Format Options
-    public string ToLongDateString()
-    {
-      return $"{DayInMonth} {GetHarptosMonthName()}, {Year} DR";
-    }
+    public string ToLongDateString() => $"{DayInMonth} {GetHarptosMonthName()}, {Year} DR";
   }
 }

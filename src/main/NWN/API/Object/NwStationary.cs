@@ -94,9 +94,6 @@ namespace NWN.API
 
     public override Location Location => Location.Create(Area, Position, Rotation);
 
-    public override Task SetRotation(float value)
-    {
-      return base.SetRotation(360 - value);
-    }
+    public override Task SetRotation(float value) => base.SetRotation(360 - value);
   }
 }

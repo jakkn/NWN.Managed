@@ -7,15 +7,11 @@ namespace NWN.API
   {
     private readonly IntPtr handle;
 
-    private ItemProperty(IntPtr handle)
-    {
-      this.handle = handle;
-    }
+    private ItemProperty(IntPtr handle) => this.handle = handle;
 
     ~ItemProperty()
     {
       Internal.NativeFunctions.FreeItemProperty(handle);
-
     }
 
     public static implicit operator IntPtr(ItemProperty effect) => effect.handle;

@@ -19,44 +19,38 @@ namespace NWNX.API
     public int AssociateType { get; set; }
     public NwObject Associate { get; set; }
 
-    public static implicit operator QuickBarSlot(NWN.Core.NWNX.QuickBarSlot slot)
+    public static implicit operator QuickBarSlot(NWN.Core.NWNX.QuickBarSlot slot) => new QuickBarSlot
     {
-      return new QuickBarSlot
-      {
-        Item = slot.oItem.ToNwObject(),
-        SecondaryItem = slot.oItem.ToNwObject(),
-        ObjectType = (QuickBarSlotType) slot.nObjectType,
-        MultiClass = slot.nMultiClass,
-        Resref = slot.sResRef,
-        CommandLabel = slot.sCommandLabel,
-        CommandLine = slot.sCommandLine,
-        ToolTip = slot.sToolTip,
-        INTParam1 = slot.nINTParam1,
-        MetaType = slot.nMetaType,
-        DomainLevel = slot.nDomainLevel,
-        AssociateType = slot.nAssociateType,
-        Associate = slot.oAssociate.ToNwObject()
-      };
-    }
+      Item = slot.oItem.ToNwObject(),
+      SecondaryItem = slot.oItem.ToNwObject(),
+      ObjectType = (QuickBarSlotType) slot.nObjectType,
+      MultiClass = slot.nMultiClass,
+      Resref = slot.sResRef,
+      CommandLabel = slot.sCommandLabel,
+      CommandLine = slot.sCommandLine,
+      ToolTip = slot.sToolTip,
+      INTParam1 = slot.nINTParam1,
+      MetaType = slot.nMetaType,
+      DomainLevel = slot.nDomainLevel,
+      AssociateType = slot.nAssociateType,
+      Associate = slot.oAssociate.ToNwObject()
+    };
 
-    public static implicit operator NWN.Core.NWNX.QuickBarSlot(QuickBarSlot slot)
+    public static implicit operator NWN.Core.NWNX.QuickBarSlot(QuickBarSlot slot) => new NWN.Core.NWNX.QuickBarSlot
     {
-      return new NWN.Core.NWNX.QuickBarSlot
-      {
-        oItem = slot.Item,
-        oSecondaryItem = slot.SecondaryItem,
-        nObjectType = (int) slot.ObjectType,
-        nMultiClass = slot.MultiClass,
-        sResRef = slot.Resref,
-        sCommandLabel = slot.CommandLabel,
-        sCommandLine = slot.CommandLine,
-        sToolTip = slot.ToolTip,
-        nINTParam1 = slot.INTParam1,
-        nMetaType = slot.MetaType,
-        nDomainLevel = slot.DomainLevel,
-        nAssociateType = slot.AssociateType,
-        oAssociate = slot.Associate
-      };
-    }
+      oItem = slot.Item,
+      oSecondaryItem = slot.SecondaryItem,
+      nObjectType = (int) slot.ObjectType,
+      nMultiClass = slot.MultiClass,
+      sResRef = slot.Resref,
+      sCommandLabel = slot.CommandLabel,
+      sCommandLine = slot.CommandLine,
+      sToolTip = slot.ToolTip,
+      nINTParam1 = slot.INTParam1,
+      nMetaType = slot.MetaType,
+      nDomainLevel = slot.DomainLevel,
+      nAssociateType = slot.AssociateType,
+      oAssociate = slot.Associate
+    };
   }
 }

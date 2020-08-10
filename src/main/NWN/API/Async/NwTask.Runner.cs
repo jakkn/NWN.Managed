@@ -52,10 +52,7 @@ namespace NWN.API
       public readonly Func<bool> CompletionSource;
       public readonly TaskCompletionSource<bool> TaskCompletionSource = new TaskCompletionSource<bool>();
 
-      public ScheduledItem(Func<bool> completionSource)
-      {
-        CompletionSource = completionSource;
-      }
+      public ScheduledItem(Func<bool> completionSource) => CompletionSource = completionSource;
     }
   }
 }

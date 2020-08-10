@@ -7,10 +7,7 @@ namespace NWN.API
   {
     private readonly IntPtr handle;
 
-    private Location(IntPtr handle)
-    {
-      this.handle = handle;
-    }
+    private Location(IntPtr handle) => this.handle = handle;
 
     ~Location()
     {

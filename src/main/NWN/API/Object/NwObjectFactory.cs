@@ -12,30 +12,15 @@ namespace NWN.API
   {
     private static readonly Dictionary<Type, NativeObjectInfoAttribute> cachedTypeInfo = new Dictionary<Type, NativeObjectInfoAttribute>();
 
-    public static T Deserialize<T>(string serializedObject) where T : NwObject
-    {
-      return (T) Deserialize(serializedObject);
-    }
+    public static T Deserialize<T>(string serializedObject) where T : NwObject => (T) Deserialize(serializedObject);
 
-    public static NwObject Deserialize(string serializedObject)
-    {
-      return CreateInternal(ObjectPlugin.Deserialize(serializedObject));
-    }
+    public static NwObject Deserialize(string serializedObject) => CreateInternal(ObjectPlugin.Deserialize(serializedObject));
 
-    public static T FromTag<T>(string tag) where T : NwObject
-    {
-      return (T) FromTag(tag);
-    }
+    public static T FromTag<T>(string tag) where T : NwObject => (T) FromTag(tag);
 
-    public static NwObject FromTag(string tag)
-    {
-      return NWScript.GetObjectByTag(tag).ToNwObject();
-    }
+    public static NwObject FromTag(string tag) => NWScript.GetObjectByTag(tag).ToNwObject();
 
-    internal static NwObject CreateInternal(Guid uuid)
-    {
-      return uuid == Guid.Empty ? null : CreateInternal(NWScript.GetObjectByUUID(uuid.ToUUIDString()));
-    }
+    internal static NwObject CreateInternal(Guid uuid) => uuid == Guid.Empty ? null : CreateInternal(NWScript.GetObjectByUUID(uuid.ToUUIDString()));
 
     internal static T CreateInternal<T>(string template, Location location, bool useAppearAnim, string newTag) where T : NwObject
     {
@@ -52,12 +37,7 @@ namespace NWN.API
       }
 
       // The module object will never change, so to save performance we return the one we already have instead of finding a new one.
-      if (objectId == NwModule.Instance)
-      {
-        return NwModule.Instance;
-      }
-
-      return ConstructManagedObject(objectId);
+      return objectId == NwModule.Instance ? NwModule.Instance : ConstructManagedObject(objectId);
     }
 
     private static NwObject ConstructManagedObject(uint objectId)
@@ -93,15 +73,9 @@ namespace NWN.API
       }
     }
 
-    internal static ObjectType GetObjectType<T>() where T : NwObject
-    {
-      return GetNativeObjectInfo(typeof(T)).ObjectType;
-    }
+    internal static ObjectType GetObjectType<T>() where T : NwObject => GetNativeObjectInfo(typeof(T)).ObjectType;
 
-    internal static InternalObjectType GetInternalObjectType<T>() where T : NwObject
-    {
-      return GetNativeObjectInfo(typeof(T)).InternalObjectType;
-    }
+    internal static InternalObjectType GetInternalObjectType<T>() where T : NwObject => GetNativeObjectInfo(typeof(T)).InternalObjectType;
 
     private static NativeObjectInfoAttribute GetNativeObjectInfo(Type type)
     {

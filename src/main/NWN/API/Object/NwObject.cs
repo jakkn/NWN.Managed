@@ -12,15 +12,9 @@ namespace NWN.API
     internal const uint INVALID = NWScript.OBJECT_INVALID;
     protected readonly uint ObjectId;
 
-    public static implicit operator uint(NwObject obj)
-    {
-      return obj == null ? INVALID : obj.ObjectId;
-    }
+    public static implicit operator uint(NwObject obj) => obj == null ? INVALID : obj.ObjectId;
 
-    internal NwObject(uint objectId)
-    {
-      ObjectId = objectId;
-    }
+    internal NwObject(uint objectId) => ObjectId = objectId;
 
     /// <summary>
     /// Gets the globally unique identifier for this object.
@@ -137,55 +131,28 @@ namespace NWN.API
       NWScript.ClearAllActions(clearCombatState.ToInt());
     }
 
-    public LocalBool GetLocalBool(string name)
-    {
-      return new LocalBool(this, name);
-    }
+    public LocalBool GetLocalBool(string name) => new LocalBool(this, name);
 
-    public LocalInt GetLocalInt(string name)
-    {
-      return new LocalInt(this, name);
-    }
+    public LocalInt GetLocalInt(string name) => new LocalInt(this, name);
 
-    public LocalFloat GetLocalFloat(string name)
-    {
-      return new LocalFloat(this, name);
-    }
+    public LocalFloat GetLocalFloat(string name) => new LocalFloat(this, name);
 
-    public LocalString GetLocalString(string name)
-    {
-      return new LocalString(this, name);
-    }
+    public LocalString GetLocalString(string name) => new LocalString(this, name);
 
-    public LocalLocation GetLocalLocation(string name)
-    {
-      return new LocalLocation(this, name);
-    }
+    public LocalLocation GetLocalLocation(string name) => new LocalLocation(this, name);
 
-    public LocalObject GetLocalObject(string name)
-    {
-      return new LocalObject(this, name);
-    }
+    public LocalObject GetLocalObject(string name) => new LocalObject(this, name);
 
-    public LocalUUID GetLocalUUID(string name)
-    {
-      return new LocalUUID(this, name);
-    }
+    public LocalUUID GetLocalUUID(string name) => new LocalUUID(this, name);
 
     public bool HasClashingUUID()
     {
       return string.IsNullOrEmpty(NWScript.GetObjectUUID(this));
     }
 
-    public void ForceRefreshUUID()
-    {
-      NWScript.ForceRefreshObjectUUID(this);
-    }
+    public void ForceRefreshUUID() => NWScript.ForceRefreshObjectUUID(this);
 
-    public string Serialize()
-    {
-      return ObjectPlugin.Serialize(this);
-    }
+    public string Serialize() => ObjectPlugin.Serialize(this);
 
     public bool Equals(NwObject other)
     {
@@ -222,19 +189,10 @@ namespace NWN.API
       return Equals((NwObject) obj);
     }
 
-    public override int GetHashCode()
-    {
-      return (int) ObjectId;
-    }
+    public override int GetHashCode() => (int) ObjectId;
 
-    public static bool operator ==(NwObject left, NwObject right)
-    {
-      return Equals(left, right);
-    }
+    public static bool operator ==(NwObject left, NwObject right) => Equals(left, right);
 
-    public static bool operator !=(NwObject left, NwObject right)
-    {
-      return !Equals(left, right);
-    }
+    public static bool operator !=(NwObject left, NwObject right) => !Equals(left, right);
   }
 }

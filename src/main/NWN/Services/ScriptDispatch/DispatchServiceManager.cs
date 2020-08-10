@@ -8,10 +8,7 @@ namespace NWN.Services
   {
     private readonly List<IScriptDispatcher> dispatchers;
 
-    public DispatchServiceManager(IEnumerable<IScriptDispatcher> dispatchers)
-    {
-      this.dispatchers = dispatchers.ToList();
-    }
+    public DispatchServiceManager(IEnumerable<IScriptDispatcher> dispatchers) => this.dispatchers = dispatchers.ToList();
 
     public int OnRunScript(string script, uint oidSelf)
     {

@@ -76,26 +76,17 @@ namespace NWN.API
     /// <summary>
     /// The GameObject that has this item in its inventory, otherwise null if it is on the ground, or not in any inventory.
     /// </summary>
-    public NwGameObject Possessor
-    {
-      get => NWScript.GetItemPossessor(this).ToNwObject<NwGameObject>();
-    }
+    public NwGameObject Possessor => NWScript.GetItemPossessor(this).ToNwObject<NwGameObject>();
 
     /// <summary>
     /// Gets the <see cref="NWN.API.Constants.BaseItemType"/> for this item.
     /// </summary>
-    public BaseItemType BaseItemType
-    {
-      get => (BaseItemType) NWScript.GetBaseItemType(this);
-    }
+    public BaseItemType BaseItemType => (BaseItemType) NWScript.GetBaseItemType(this);
 
     /// <summary>
     /// Gets the gp value for this item.
     /// </summary>
-    public int GoldValue
-    {
-      get => NWScript.GetGoldPieceValue(this);
-    }
+    public int GoldValue => NWScript.GetGoldPieceValue(this);
 
     /// <summary>
     /// Gets all active item properties currently applied to this object.
@@ -128,10 +119,8 @@ namespace NWN.API
     /// <param name="useAppearAnim">If true, whether an appear animation should play for the item.</param>
     /// <param name="newTag">A new tag for the item, otherwise the value set in the blueprint.</param>
     /// <returns>The created item.</returns>
-    public static NwItem Create(string template, Location location, bool useAppearAnim = false, string newTag = null)
-    {
-      return NwObjectFactory.CreateInternal<NwItem>(template, location, useAppearAnim, newTag);
-    }
+    public static NwItem Create(string template, Location location, bool useAppearAnim = false, string newTag = null) => 
+      NwObjectFactory.CreateInternal<NwItem>(template, location, useAppearAnim, newTag);
 
     /// <summary>
     /// Creates a new item from a template ResRef.
@@ -141,10 +130,8 @@ namespace NWN.API
     /// <param name="stackSize">The stack size of the created item.</param>
     /// <param name="newTag">A new tag for the item, otherwise the value set in the blueprint.</param>
     /// <returns>The created item.</returns>
-    public static NwItem Create(string template, NwGameObject target = null, int stackSize = 1, string newTag = null)
-    {
-      return NWScript.CreateItemOnObject(template, target, stackSize, newTag).ToNwObject<NwItem>();
-    }
+    public static NwItem Create(string template, NwGameObject target = null, int stackSize = 1, string newTag = null) => 
+      NWScript.CreateItemOnObject(template, target, stackSize, newTag).ToNwObject<NwItem>();
 
     /// <summary>
     /// Creates a copy of this item.
@@ -152,10 +139,8 @@ namespace NWN.API
     /// <param name="targetInventory">The target inventory to create the cloned item/</param>
     /// <param name="newTag">A new tag to assign the cloned item.</param>
     /// <returns>The newly cloned copy of the item.</returns>
-    public NwItem Clone(NwGameObject targetInventory, string newTag = null)
-    {
-      return NWScript.CopyObject(this, targetInventory.Location, targetInventory, newTag).ToNwObject<NwItem>();
-    }
+    public NwItem Clone(NwGameObject targetInventory, string newTag = null) => 
+      NWScript.CopyObject(this, targetInventory.Location, targetInventory, newTag).ToNwObject<NwItem>();
 
     /// <summary>
     /// Creates a copy of this item.
@@ -163,10 +148,8 @@ namespace NWN.API
     /// <param name="location">The location to create the cloned item.</param>
     /// <param name="newTag">A new tag to assign the cloned item.</param>
     /// <returns>The newly cloned copy of the item.</returns>
-    public NwItem Clone(Location location, string newTag = null)
-    {
-      return NWScript.CopyObject(this, location, INVALID, newTag).ToNwObject<NwItem>();
-    }
+    public NwItem Clone(Location location, string newTag = null) => 
+      NWScript.CopyObject(this, location, INVALID, newTag).ToNwObject<NwItem>();
 
     public static NwItem GetSpellCastItem() => NWScript.GetSpellCastItem().ToNwObject<NwItem>();
   }

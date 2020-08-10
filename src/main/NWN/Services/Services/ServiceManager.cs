@@ -31,10 +31,7 @@ namespace NWN.Services
         .Distinct();
     }
 
-    public T GetService<T>() where T : class
-    {
-      return container.GetInstance<T>();
-    }
+    public T GetService<T>() where T : class => container.GetInstance<T>();
 
     internal void InitServices()
     {

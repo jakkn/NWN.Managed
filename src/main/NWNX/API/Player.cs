@@ -15,10 +15,8 @@ namespace NWNX.API
       PlayerPlugin.SetQuickBarSlot(player, slot, data);
     }
 
-    public static QuickBarSlot GetQuickBarSlot(this NwPlayer player, int slot)
-    {
-      return PlayerPlugin.GetQuickBarSlot(player, slot);
-    }
+    public static QuickBarSlot GetQuickBarSlot(this NwPlayer player, int slot) => 
+      PlayerPlugin.GetQuickBarSlot(player, slot);
 
     public static void ForceOpenInventory(this NwPlayer player, NwPlaceable target)
     {

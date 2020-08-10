@@ -7,10 +7,7 @@ namespace NWN.API
   {
     private readonly IntPtr handle;
 
-    private Talent(IntPtr handle)
-    {
-      this.handle = handle;
-    }
+    private Talent(IntPtr handle) => this.handle = handle;
 
     ~Talent()
     {

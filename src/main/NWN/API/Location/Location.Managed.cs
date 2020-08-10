@@ -73,9 +73,7 @@ namespace NWN.API
       }
     }
 
-    public static Location Create(NwArea area, Vector3 position, float orientation)
-    {
-      return NWScript.Location(area, position, orientation);
-    }
+    public static Location Create(NwArea area, Vector3 position, float orientation) => 
+      NWScript.Location(area, position, orientation);
   }
 }

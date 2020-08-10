@@ -136,18 +136,13 @@ namespace NWN.API
     /// <summary>
     /// Gets the fog color for this area, at the specified time of day.
     /// </summary>
-    public FogColor GetFogColor(FogType fogType)
-    {
-      return (FogColor) NWScript.GetFogColor((int) fogType, this);
-    }
+    public FogColor GetFogColor(FogType fogType) => 
+      (FogColor) NWScript.GetFogColor((int) fogType, this);
 
     /// <summary>
     /// Sets the fog color for this area, at the specified time of day.
     /// </summary>
-    public void SetFogColor(FogType fogType, FogColor fogColor)
-    {
-      NWScript.SetFogColor((int) fogType, (int) fogColor, this);
-    }
+    public void SetFogColor(FogType fogType, FogColor fogColor) => NWScript.SetFogColor((int) fogType, (int) fogColor, this);
 
     /// <summary>
     /// Gets the fog amount for this area, at the specified time of day.

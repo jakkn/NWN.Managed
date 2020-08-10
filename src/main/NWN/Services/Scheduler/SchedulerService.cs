@@ -18,10 +18,7 @@ namespace NWN.Services
     private readonly List<ScheduledItem> scheduledItems = new List<ScheduledItem>(1024);
     private readonly IComparer<ScheduledItem> comparer = new ScheduledItem.SortedByExecutionTime();
 
-    public SchedulerService(LoopTimeService loopTimeService)
-    {
-      this.loopTimeService = loopTimeService;
-    }
+    public SchedulerService(LoopTimeService loopTimeService) => this.loopTimeService = loopTimeService;
 
     public IDisposable Schedule(Action task, TimeSpan delay)
     {

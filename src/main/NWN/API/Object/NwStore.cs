@@ -9,10 +9,8 @@ namespace NWN.API
   {
     internal NwStore(uint objectId) : base(objectId) {}
 
-    public static NwStore Create(string template, Location location, bool useAppearAnim = false, string newTag = "")
-    {
-      return NwObjectFactory.CreateInternal<NwStore>(template, location, useAppearAnim, newTag);
-    }
+    public static NwStore Create(string template, Location location, bool useAppearAnim = false, string newTag = "") => 
+      NwObjectFactory.CreateInternal<NwStore>(template, location, useAppearAnim, newTag);
 
     public int StoreGold
     {

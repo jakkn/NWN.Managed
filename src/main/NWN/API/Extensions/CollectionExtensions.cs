@@ -22,9 +22,7 @@ namespace NWN.API
       values.Add(value);
     }
 
-    public static TValue SafeGet<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
-    {
-      return dictionary.TryGetValue(key, out TValue retVal) ? retVal : default;
-    }
+    public static TValue SafeGet<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key) => 
+      dictionary.TryGetValue(key, out TValue retVal) ? retVal : default;
   }
 }

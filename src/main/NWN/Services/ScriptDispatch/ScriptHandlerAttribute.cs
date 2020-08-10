@@ -9,9 +9,6 @@ namespace NWN.Services
   {
     public readonly string ScriptName;
 
-    public ScriptHandlerAttribute(string scriptName)
-    {
-      ScriptName = scriptName;
-    }
+    public ScriptHandlerAttribute(string scriptName) => ScriptName = scriptName;
   }
 }

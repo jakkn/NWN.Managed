@@ -8,9 +8,7 @@ namespace NWN.API
   {
     internal NwWaypoint(uint objectId) : base(objectId) {}
 
-    public static NwWaypoint Create(string template, Location location, bool useAppearAnim = false, string newTag = "")
-    {
-      return NwObjectFactory.CreateInternal<NwWaypoint>(template, location, useAppearAnim, newTag);
-    }
+    public static NwWaypoint Create(string template, Location location, bool useAppearAnim = false, string newTag = "") => 
+      NwObjectFactory.CreateInternal<NwWaypoint>(template, location, useAppearAnim, newTag);
   }
 }

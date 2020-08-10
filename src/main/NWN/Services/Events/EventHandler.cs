@@ -12,15 +12,9 @@ namespace NWN.Services
     internal readonly string ScriptName = ScriptNameGenerator.Create();
     internal readonly Event GlobalEvent;
 
-    internal static EventHandler Create<T>() where T : Event<T>, new()
-    {
-      return new EventHandler(new T());
-    }
+    internal static EventHandler Create<T>() where T : Event<T>, new() => new EventHandler(new T());
 
-    private EventHandler(Event globalEvent)
-    {
-      this.GlobalEvent = globalEvent;
-    }
+    private EventHandler(Event globalEvent) => this.GlobalEvent = globalEvent;
 
     internal void Subscribe<TEvent>(Action<TEvent> handler) where TEvent : Event<TEvent>, new()
     {

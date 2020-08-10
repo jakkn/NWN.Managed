@@ -9,10 +9,7 @@ namespace NWN.API
 
     public abstract T Value { get; set; }
 
-    public static implicit operator T(LocalVariable<T> value)
-    {
-      return value.Value;
-    }
+    public static implicit operator T(LocalVariable<T> value) => value.Value;
 
     protected LocalVariable(NwObject instance, string name)
     {
@@ -57,19 +54,10 @@ namespace NWN.API
       return Equals((LocalVariable<T>) obj);
     }
 
-    public override int GetHashCode()
-    {
-      return (Value != null ? Value.GetHashCode() : 0);
-    }
+    public override int GetHashCode() => (Value != null ? Value.GetHashCode() : 0);
 
-    public static bool operator ==(LocalVariable<T> left, LocalVariable<T> right)
-    {
-      return Equals(left, right);
-    }
+    public static bool operator ==(LocalVariable<T> left, LocalVariable<T> right) => Equals(left, right);
 
-    public static bool operator !=(LocalVariable<T> left, LocalVariable<T> right)
-    {
-      return !Equals(left, right);
-    }
+    public static bool operator !=(LocalVariable<T> left, LocalVariable<T> right) => !Equals(left, right);
   }
 }

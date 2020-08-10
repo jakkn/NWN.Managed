@@ -19,10 +19,7 @@ namespace NWN.API.Events
     /// </summary>
     public readonly EventScriptType EventScriptType;
 
-    public ScriptEventAttribute(EventScriptType eventScriptType)
-    {
-      this.EventScriptType = eventScriptType;
-    }
+    public ScriptEventAttribute(EventScriptType eventScriptType) => this.EventScriptType = eventScriptType;
 
     // No initial subscribe for script events.
     void IEventAttribute.InitHook(string scriptName) {}
@@ -44,9 +41,6 @@ namespace NWN.API.Events
       }
     }
 
-    private void ContinueWithNative(string scriptName, NwObject objSelf)
-    {
-      Interop.ExecuteNss(scriptName, objSelf);
-    }
+    private static void ContinueWithNative(string scriptName, NwObject objSelf) => Interop.ExecuteNss(scriptName, objSelf);
   }
 }

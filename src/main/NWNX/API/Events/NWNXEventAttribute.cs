@@ -12,10 +12,7 @@ namespace NWNX.API.Events
   {
     public readonly string EventName;
 
-    public NWNXEventAttribute(string eventName)
-    {
-      this.EventName = eventName;
-    }
+    public NWNXEventAttribute(string eventName) => this.EventName = eventName;
 
     void IEventAttribute.InitHook(string scriptName)
     {

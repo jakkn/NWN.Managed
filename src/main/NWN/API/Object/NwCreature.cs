@@ -281,10 +281,8 @@ namespace NWN.API
     /// <param name="useAppearAnim">If true, plays EffectAppear when created.</param>
     /// <param name="newTag">The new tag to assign this creature. Leave uninitialized/as null to use the template's tag.</param>
     /// <returns></returns>
-    public static NwCreature Create(string template, Location location, bool useAppearAnim = false, string newTag = "")
-    {
-      return NwObjectFactory.CreateInternal<NwCreature>(template, location, useAppearAnim, newTag);
-    }
+    public static NwCreature Create(string template, Location location, bool useAppearAnim = false, string newTag = "") => 
+      NwObjectFactory.CreateInternal<NwCreature>(template, location, useAppearAnim, newTag);
 
     /// <summary>
     /// Gets the item that is equipped in the specified inventory slot.
@@ -378,20 +376,14 @@ namespace NWN.API
     /// <summary>
     ///  Determine the number of levels this creature holds in the specified <see cref="ClassType"/>.
     /// </summary>
-    public int GetLevelByClass(ClassType classType)
-    {
-      return NWScript.GetLevelByClass((int) classType, this);
-    }
+    public int GetLevelByClass(ClassType classType) => NWScript.GetLevelByClass((int) classType, this);
 
     /// <summary>
     /// Gets if this creature has the specified spell available to cast.
     /// </summary>
     /// <param name="spell">The spell to check.</param>
     /// <returns>True if this creature can immediately cast the spell.</returns>
-    public bool HasSpellUse(Spell spell)
-    {
-      return NWScript.GetHasSpell((int) spell, this) > 0;
-    }
+    public bool HasSpellUse(Spell spell) => NWScript.GetHasSpell((int) spell, this) > 0;
 
     /// <summary>
     /// Gets the number of ranks this creature has in the specified skill.
@@ -399,20 +391,16 @@ namespace NWN.API
     /// <param name="skill">The skill to check.</param>
     /// <param name="ranksOnly">If true, returns the base amount of skill ranks without any ability modifiers.</param>
     /// <returns>-1 if the creature does not have this skill, 0 if untrained, otherwise the number of skill ranks.</returns>
-    public int GetSkillRank(Skill skill, bool ranksOnly = false)
-    {
-      return NWScript.GetSkillRank((int) skill, this, ranksOnly.ToInt());
-    }
+    public int GetSkillRank(Skill skill, bool ranksOnly = false) => 
+      NWScript.GetSkillRank((int) skill, this, ranksOnly.ToInt());
 
     /// <summary>
     /// Returns true if this creature has the skill specified, and is useable.
     /// </summary>
     /// <param name="skill">The skill to check.</param>
     /// <returns>True if the creature has this skill.</returns>
-    public bool HasSkill(Skill skill)
-    {
-      return NWScript.GetHasSkill((int) skill, this).ToBool();
-    }
+    public bool HasSkill(Skill skill) => 
+      NWScript.GetHasSkill((int) skill, this).ToBool();
 
     /// <summary>
     /// Returns true if 1d20 + skill rank is greater than, or equal to difficultyClass.
@@ -420,29 +408,23 @@ namespace NWN.API
     /// <param name="skill">The type of skill check.</param>
     /// <param name="difficultyClass">The DC of this skill check.</param>
     /// <returns></returns>
-    public bool DoSkillCheck(Skill skill, int difficultyClass)
-    {
-      return NWScript.GetIsSkillSuccessful(this, (int) skill, difficultyClass).ToBool();
-    }
+    public bool DoSkillCheck(Skill skill, int difficultyClass) => 
+      NWScript.GetIsSkillSuccessful(this, (int) skill, difficultyClass).ToBool();
 
     /// <summary>
     /// Returns true if this creature knows the specified <see cref="Feat"/>, and can use it.<br/>
     /// Use <see cref="Creature.KnowsFeat"/> to simply check if a creature knows <see cref="Feat"/>, but may or may not have uses remaining.
     /// </summary>
-    public bool HasFeatPrepared(Feat feat)
-    {
-      return NWScript.GetHasFeat((int) feat, this).ToBool();
-    }
+    public bool HasFeatPrepared(Feat feat) => 
+      NWScript.GetHasFeat((int) feat, this).ToBool();
 
     /// <summary>
     /// Determines whether this creature has the specified talent.
     /// </summary>
     /// <param name="talent">The talent to check.</param>
     /// <returns>True if this creature has talent, otherwise false.</returns>
-    public bool HasTalent(Talent talent)
-    {
-      return NWScript.GetCreatureHasTalent(talent, this).ToBool();
-    }
+    public bool HasTalent(Talent talent) => 
+      NWScript.GetCreatureHasTalent(talent, this).ToBool();
 
     /// <summary>
     /// Applies the specified effect to this creature.
@@ -585,10 +567,7 @@ namespace NWN.API
     /// <summary>
     /// Get the item possessed by this creature with the tag itemTag
     /// </summary>
-    public NwItem FindItemWithTag(string itemTag)
-    {
-      return NWScript.GetItemPossessedBy(this, itemTag).ToNwObject<NwItem>();
-    }
+    public NwItem FindItemWithTag(string itemTag) => NWScript.GetItemPossessedBy(this, itemTag).ToNwObject<NwItem>();
 
     /// <summary>
     /// Commands the creature to equip the specified item into the given inventory slot.<br/>
@@ -648,10 +627,7 @@ namespace NWN.API
     /// <summary>
     /// Returns true if this creature considers the target an enemy.
     /// </summary>
-    public bool IsEnemy(NwCreature target)
-    {
-      return NWScript.GetIsEnemy(target, this).ToBool();
-    }
+    public bool IsEnemy(NwCreature target) => NWScript.GetIsEnemy(target, this).ToBool();
 
     /// <summary>
     /// Returns this creature's domains in the specified class. Unless custom content is used, only clerics have domains.
